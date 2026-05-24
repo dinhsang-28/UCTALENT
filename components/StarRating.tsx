@@ -10,7 +10,7 @@ export default function StarRating({ rating, size = 'sm' }: StarRatingProps) {
   return (
     <span className={`inline-flex gap-0.5 ${sz}`}>
       {[1, 2, 3, 4, 5].map(i => (
-        <span key={i} className={i <= rating ? 'star-fill' : 'star-empty'}>★</span>
+        <span key={i} className={i <= rating ? 'star-fill' : 'star-empty'}></span>
       ))}
     </span>
   )

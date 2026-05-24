@@ -78,7 +78,7 @@ export default function AIResponsePanel({
               AI đang viết câu trả lời...
             </>
           ) : (
-            <>✨ Generate AI Responses</>
+            <> Generate AI Responses</>
           )}
         </button>
       </div>

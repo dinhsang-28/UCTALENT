@@ -58,11 +58,6 @@ export async function POST(req: NextRequest) {
     }
 
     let replies: Record<string, string>
-
-    // Try OpenAI first, then Gemini, then fallback
-    // if (process.env.OPENAI_API_KEY) {
-    //   replies = await callOpenAI(review.text, review.rating)
-    // } else if (process.env.GEMINI_API_KEY) {
     if (process.env.GEMINI_API_KEY) {
       replies = await callGemini(review.text, review.rating)
     } else {
@@ -93,28 +88,6 @@ export async function POST(req: NextRequest) {
     )
   }
 }
-
-// async function callOpenAI(text: string, rating: number): Promise<Record<string, string>> {
-//   const res = await fetch('https://api.openai.com/v1/chat/completions', {
-//     method: 'POST',
-//     headers: {
-//       Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
-//       'Content-Type': 'application/json',
-//     },
-//     body: JSON.stringify({
-//       model: '~openai/gpt-latest',
-//       messages: [{ role: 'user', content: buildPrompt(text, rating) }],
-//       response_format: { type: 'json_object' },
-//       temperature: 0.7,
-//       max_tokens: 600,
-//     }),
-//   })
-
-//   const data = await res.json()
-//   if (!res.ok) throw new Error(data.error?.message || 'OpenAI error')
-
-//   return JSON.parse(data.choices[0].message.content)
-// }
 
 async function callGemini(text: string, rating: number): Promise<Record<string, string>> {
   const res = await fetch(

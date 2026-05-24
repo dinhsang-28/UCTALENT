@@ -11,7 +11,6 @@ export async function POST(req: NextRequest) {
 
     const db = createServerClient()
 
-    // Mark selected response as approved
     const { error: approveErr } = await db
       .from('ai_responses')
       .update({ approved: true })
@@ -19,7 +18,6 @@ export async function POST(req: NextRequest) {
 
     if (approveErr) throw approveErr
 
-    // Update review status to resolved
     const { error: reviewErr } = await db
       .from('reviews')
       .update({ status: 'resolved' })

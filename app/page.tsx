@@ -60,7 +60,7 @@ export default function Dashboard() {
             onClick={loadReviews}
             className="btn-ghost text-xs"
           >
-            ↻ Làm mới
+            Làm mới
           </button>
         </div>
       </header>

@@ -26,7 +26,7 @@ export default function FetchSection({ onFetched, onError }: FetchSectionProps) 
       const data = await res.json()
       if (!res.ok) throw new Error(data.error)
 
-      const src = data.source === 'google' ? '📍 Google Maps' : '🧪 Dữ liệu mẫu'
+      const src = data.source === 'google' ? ' Google Maps' : ' Dữ liệu mẫu'
       onFetched(`${src}: Đã lấy ${data.count} review. ${data.message || ''}`)
     } catch (e) {
       onError(e instanceof Error ? e.message : 'Lỗi kết nối')
@@ -38,7 +38,7 @@ export default function FetchSection({ onFetched, onError }: FetchSectionProps) 
   return (
     <div className="card p-5">
       <div className="flex items-center gap-2 mb-4">
-        <div className="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center text-blue-600 text-sm">📍</div>
+        <div className="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center text-blue-600 text-sm"></div>
         <div>
           <h2 className="font-semibold text-sm" style={{ color: 'var(--text-primary)' }}>Lấy Review từ Google Maps</h2>
           <p className="text-xs" style={{ color: 'var(--text-muted)' }}>Nhập Place ID để fetch review</p>
@@ -81,20 +81,6 @@ export default function FetchSection({ onFetched, onError }: FetchSectionProps) 
         <label htmlFor="useSample" className="text-xs cursor-pointer" style={{ color: 'var(--text-secondary)' }}>
           Dùng dữ liệu mẫu (nếu không có Google API key)
         </label>
-      </div>
-
-      <div className="mt-3 p-3 rounded-lg text-xs" style={{ background: 'var(--bg)', color: 'var(--text-muted)' }}>
-        💡 Tìm Place ID tại:{' '}
-        <a
-          href="https://developers.google.com/maps/documentation/places/web-service/place-id"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="underline hover:no-underline"
-          style={{ color: 'var(--accent)' }}
-        >
-          Google Place ID Finder
-        </a>
-        . Hoặc tick &quot;Dùng dữ liệu mẫu&quot; để test ngay.
       </div>
     </div>
   )
