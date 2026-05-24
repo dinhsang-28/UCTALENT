@@ -10,7 +10,6 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'placeId is required' }, { status: 400 })
     }
 
-    // Use sample data if requested or no Google API key
     if (useSample || !process.env.GOOGLE_PLACES_API_KEY) {
       const data = await seedSampleData(placeId)
       return NextResponse.json({

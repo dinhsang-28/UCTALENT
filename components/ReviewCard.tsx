@@ -72,7 +72,7 @@ export default function ReviewCard({ review, onStatusChange, onError }: ReviewCa
           </span>
         ) : (
           <span className="badge-resolved">
-            <span>✓</span>
+            <span></span>
             Resolved
           </span>
         )}
@@ -82,7 +82,7 @@ export default function ReviewCard({ review, onStatusChange, onError }: ReviewCa
             onClick={() => setExpanded(!expanded)}
             className="btn-ghost ml-auto text-xs py-1 px-2"
           >
-            {expanded ? '▲ Ẩn bớt' : '✨ Trả lời bằng AI'}
+            {expanded ? ' Ẩn bớt' : 'Trả lời bằng AI'}
           </button>
         )}
       </div>
@@ -90,7 +90,7 @@ export default function ReviewCard({ review, onStatusChange, onError }: ReviewCa
       {/* Approved response display */}
       {review.status === 'resolved' && approvedResponse && (
         <div className="mt-3 p-3 rounded-lg border text-sm" style={{ background: 'var(--success-bg)', borderColor: '#86efac' }}>
-          <p className="text-xs font-medium mb-1" style={{ color: 'var(--success)' }}>✓ Câu trả lời đã duyệt</p>
+          <p className="text-xs font-medium mb-1" style={{ color: 'var(--success)' }}>Câu trả lời đã duyệt</p>
           <p style={{ color: 'var(--text-primary)', lineHeight: '1.5' }}>{approvedResponse.content}</p>
         </div>
       )}
